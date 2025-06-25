@@ -1,0 +1,35 @@
+<nav class="sidebar" [class.collapsed]="isCollapsed" [class.mobile]="isMobile">
+  <div class="sidebar-header">
+    <div class="logo" [class.hidden]="isCollapsed && isMobile">
+      <h2>Social Media Tool</h2>
+    </div>
+    <button class="toggle-btn" (click)="toggleSidebar()" [attr.aria-label]="isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'">
+      <span class="hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+  </div>
+
+  <ul class="nav-links" [class.hidden]="isCollapsed && isMobile">
+    <li>
+      <a [routerLink]="'/instagram'" routerLinkActive="active">
+        <span class="icon">📷</span>
+        <span class="text" [class.hidden]="isCollapsed && !isMobile">Instagram Chat</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="'/whatsapp'" routerLinkActive="active">
+        <span class="icon">💬</span>
+        <span class="text" [class.hidden]="isCollapsed && !isMobile">WhatsApp Chat</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="sidebar-overlay"
+     [class.active]="!isCollapsed && isMobile"
+     (click)="toggleSidebar()">
+</div>

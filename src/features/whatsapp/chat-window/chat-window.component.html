@@ -1,0 +1,71 @@
+<div class="chat-container">
+  <!-- Chat Header -->
+  <div class="chat-header">
+    <div class="contact-info">
+      <div class="avatar">
+        <img src="assets/images/smart-ai-agent.png" alt="Smart AI Agent" />
+      </div>
+      <div class="contact-details">
+        <h3>Smart AI Agent</h3>
+        <span class="status">Business Account</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="action-btn">
+        <i class="icon-search"></i>
+      </button>
+      <button class="action-btn">
+        <i class="icon-more"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Chat Messages -->
+  <div class="chat-body">
+    <div class="date-separator">
+      <span>18/6/2025</span>
+    </div>
+
+    <div class="system-message">
+      <p>This business uses a secure service from Meta to manage this chat. Click to learn more.</p>
+    </div>
+
+    <div class="date-separator">
+      <span>Today</span>
+    </div>
+
+    <div *ngFor="let msg of messages"
+         [ngClass]="'message-wrapper ' + (msg.type === 'sent' ? 'sent' : 'received')">
+      <div class="message">
+        <div class="message-content">{{ msg.text }}</div>
+        <div class="message-time">
+          <span>10:46 pm</span>
+          <span *ngIf="msg.type === 'sent'" class="message-status">✓✓</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Input -->
+  <div class="chat-input">
+    <button class="attach-btn">
+      <i class="icon-plus"></i>
+    </button>
+    <div class="input-container">
+      <input
+        [(ngModel)]="message"
+        type="text"
+        placeholder="Type a message"
+        (keyup.enter)="sendMessage()" />
+      <button class="emoji-btn">
+        <i class="icon-emoji"></i>
+      </button>
+    </div>
+    <button class="send-btn" (click)="sendMessage()" [disabled]="!message.trim()">
+      <i class="icon-send"></i>
+    </button>
+    <button class="voice-btn">
+      <i class="icon-mic"></i>
+    </button>
+  </div>
+</div>

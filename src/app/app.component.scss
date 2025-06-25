@@ -1,0 +1,78 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 240px; // Default sidebar width
+  padding: 1rem;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
+  background-color: #f8fafc;
+  min-height: 100vh;
+
+  &.sidebar-expanded {
+    margin-left: 240px;
+  }
+
+  &:not(.sidebar-expanded) {
+    margin-left: 70px; // Collapsed sidebar width
+  }
+}
+
+// Mobile toggle button (when sidebar is collapsed)
+.mobile-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  background-color: #1e293b;
+  border: none;
+  color: #fff;
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  display: none;
+
+  &:hover {
+    background-color: #334155;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  .hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    width: 20px;
+    height: 15px;
+    justify-content: space-between;
+
+    span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: #fff;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+// Mobile responsive adjustments
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0 !important; // No margin on mobile
+    padding: 1rem 0.5rem;
+    padding-top: 4rem; // Account for mobile toggle button
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+}
